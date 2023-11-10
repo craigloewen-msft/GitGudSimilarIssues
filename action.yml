@@ -7,6 +7,9 @@ inputs:
     description: 'Issue to analyze title'
     required: true
     default: 'Hello World'
+  repo:
+    description: 'Repository to analyze'
+    required: true
 
 outputs:
   message: 

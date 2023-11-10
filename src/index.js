@@ -1,18 +1,26 @@
-// Imports @actions/core npm library into core variable
+// Import required libraries
 const core = require('@actions/core');
+const axios = require('axios');
 
 try {
-    // Get The Input Value of `who-to-greet`
-    const nameToGreet = core.getInput('issuetitle');
+    // Get the input values
+    const issueTitle = core.getInput('issuetitle');
+    const repo = core.getInput('repo');
 
-    // Create a markdown message
-    const message = `# Welcome to the repository, ${nameToGreet}!\n\nWe're glad you're here. Feel free to explore and contribute.`;
+    // Construct the API URL
+    const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitle}`;
 
-    // Prints The Value of nameToGreet in Github Action
-    core.info(message);
-
-    // Sets The Time As Output
-    core.setOutput("message", message);
+    // Send a GET request to the API
+    axios.get(url).then(response => {
+        // Set the response data as the output
+        core.setInfo("Success Job");
+        core.setInfo(response.data.toString());
+        core.setOutput("message", response.data.toString());
+    }).catch(error => {
+        core.setFailed(error.message);
+        core.setInfo("Failed Job");
+        core.setInfo(error.message);
+    });
 } catch (error) {
     core.setFailed(error.message);
 }

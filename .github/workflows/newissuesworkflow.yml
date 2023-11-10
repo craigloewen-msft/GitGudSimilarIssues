@@ -9,10 +9,11 @@ jobs:
       message: ${{ steps.getbody.outputs.message }}
     steps:
       - uses: actions/checkout@v2
-      - uses: craigloewen-msft/GitGudSimilarIssues@main
-        id: getbody
+      - id: getbody
+        uses: craigloewen-msft/GitGudSimilarIssues@main
         with:
-          issuetitle: 'TEST'
+          issuetitle: ${{ github.event.issue.title }}
+          repo: ${{ github.repository }}
   add-comment:
     needs: greet
     runs-on: ubuntu-latest
