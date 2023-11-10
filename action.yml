@@ -1,0 +1,17 @@
+name: 'GitGudSimilarIssues Action'
+
+description: 'Get similar issues based on an issue title from GitGudIssues'
+
+inputs:
+  issuetitle:  
+    description: 'Issue to analyze title'
+    required: true
+    default: 'Hello World'
+
+outputs:
+  message: 
+    description: 'Output message'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
