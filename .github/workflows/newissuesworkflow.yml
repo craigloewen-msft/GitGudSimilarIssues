@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
-        id: greet
+      - uses: craigloewen-msft/GitGudSimilarIssues@main
         with:
-          issuetitle: 'World'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issuetitle: 'TEST'
   comment:
     needs: greet
     runs-on: ubuntu-latest
