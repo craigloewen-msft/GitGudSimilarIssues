@@ -12,6 +12,7 @@ jobs:
         with:
           issuetitle: 'TEST'
   add-comment:
+    needs: greet
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -22,7 +23,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
-          BODY: >
-            This issue is available for anyone to work on.
-            **Make sure to reference this issue in your pull request.**
-            :sparkles: Thank you for your contribution! :sparkles:
+          BODY: ${{ needs.getbody.outputs.message }}
