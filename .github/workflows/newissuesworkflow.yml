@@ -5,6 +5,8 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    outputs:
+      message: ${{ steps.getbody.outputs.message }}
     steps:
       - uses: actions/checkout@v2
       - uses: craigloewen-msft/GitGudSimilarIssues@main
@@ -23,4 +25,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
-          BODY: ${{ needs.getbody.outputs.message }}
+          BODY: ${{ needs.greet.outputs.message }}
