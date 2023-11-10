@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "package": "ncc build ./src/index.js --license licenses.txt"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/craigloewen-msft/GitGudSimilarIssues.git"
