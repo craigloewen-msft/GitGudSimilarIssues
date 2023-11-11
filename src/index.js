@@ -13,7 +13,8 @@ try {
     }
 
     // Construct the API URL
-    const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitle}`;
+    const issueTitleEncoded = encodeURIComponent(issueTitle);
+    const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitleEncoded}`;
 
     core.info(`Querying URL: ${url}`);
 
