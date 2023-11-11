@@ -32596,13 +32596,13 @@ try {
     // Construct the API URL
     const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitle}`;
 
+    core.info(`Querying URL: ${url}`);
 
     // Send a GET request to the API
     axios.get(url).then(response => {
         // Check if success is false
         if (response.data.success === false) {
             core.info(JSON.stringify(response.data, null, 2));
-            core.info(url);
             core.setFailed("API request was not successful");
         } else {
             // Filter the similarIssues array
