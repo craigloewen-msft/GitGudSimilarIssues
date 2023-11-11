@@ -32594,9 +32594,17 @@ try {
     // Send a GET request to the API
     axios.get(url).then(response => {
         // Set the response data as the output
-        core.info("Success Job");
-        core.info(JSON.stringify(response.data, null, 2));
-        core.setOutput("message", JSON.stringify(response.data, null, 2));
+        // Check if success is false
+        if (response.data.success === false) {
+            core.setFailed("API request was not successful");
+            core.info(JSON.stringify(response.data, null, 2));
+            core.setOutput("message", JSON.stringify(response.data, null, 2));
+        } else {
+            // Set the response data as the output
+            core.info("Success Job");
+            core.info(JSON.stringify(response.data, null, 2));
+            core.setOutput("message", JSON.stringify(response.data, null, 2));
+        }
     }).catch(error => {
         core.setFailed(error.message);
         core.info("Failed Job");
