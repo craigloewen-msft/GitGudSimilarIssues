@@ -6,7 +6,7 @@ try {
     // Get the input values
     const issueTitle = core.getInput('issuetitle');
     const repo = core.getInput('repo');
-    const similarityTolerance = parseFloat(core.getInput('eucldistancetolerance'));
+    const similarityTolerance = parseFloat(core.getInput('similaritytolerance'));
 
     if (similarityTolerance == null || similarityTolerance === 0 || isNaN(similarityTolerance)) {
         core.setFailed("Invalid distance tolerance");
