@@ -28,7 +28,7 @@ try {
             // Filter the similarIssues array
             const similarIssues = response.data.similarIssues
                 .filter(issue => issue.score !== 0 && issue.score <= distanceTolerance)
-                .sort((a, b) => a.score - b.score);
+                .sort((a, b) => b.score - a.score);
 
             core.info("Similar issues:");
             core.info(JSON.stringify(similarIssues, null, 2));
@@ -48,7 +48,7 @@ try {
                 if (openIssues.length > 0) {
                     message += "### Open similar issues:\n\n";
                     openIssues.forEach(issue => {
-                        message += `- [${issue.title} (#${issue.number})](${issue.html_url}),  score: ${issue.score.toFixed(2)}\n`;
+                        message += `- [${issue.title} (#${issue.number})](${issue.html_url}),  similarity score: ${issue.score.toFixed(2)}\n`;
                     });
                 }
 
@@ -57,7 +57,7 @@ try {
                 if (closedIssues.length > 0) {
                     message += "\n### Closed similar issues:\n";
                     closedIssues.forEach(issue => {
-                        message += `- [${issue.title} (#${issue.number})](${issue.html_url}),  score: ${issue.score.toFixed(2)}\n`;
+                        message += `- [${issue.title} (#${issue.number})](${issue.html_url}),  similarity score: ${issue.score.toFixed(2)}\n`;
                     });
                 }
 
