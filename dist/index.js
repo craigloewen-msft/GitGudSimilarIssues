@@ -32602,6 +32602,11 @@ try {
             // Filter the similarIssues array
             const similarIssues = response.data.similarIssues.filter(issue => issue.score !== 0 && issue.score <= 0.75);
 
+            core.info("Similar issues:");
+            core.info(JSON.stringify(similarIssues, null, 2));
+            core.info("All issues:");
+            core.info(JSON.stringify(response.data.similarIssues, null, 2));
+
             // Check if the filtered array has a length of 0
             if (similarIssues.length === 0) {
                 core.setFailed("No similar issues found");
