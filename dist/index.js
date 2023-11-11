@@ -32591,6 +32591,8 @@ try {
     // Construct the API URL
     const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitle}`;
 
+    const distanceTolerance = 2;
+
     // Send a GET request to the API
     axios.get(url).then(response => {
         // Check if success is false
@@ -32600,7 +32602,7 @@ try {
             core.setFailed("API request was not successful");
         } else {
             // Filter the similarIssues array
-            const similarIssues = response.data.similarIssues.filter(issue => issue.score !== 0 && issue.score <= 0.75);
+            const similarIssues = response.data.similarIssues.filter(issue => issue.score !== 0 && issue.score <= distanceTolerance);
 
             core.info("Similar issues:");
             core.info(JSON.stringify(similarIssues, null, 2));
