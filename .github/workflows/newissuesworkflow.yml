@@ -14,6 +14,7 @@ jobs:
         with:
           issuetitle: ${{ github.event.issue.title }}
           repo: ${{ github.repository }}
+          eucldistancetolerance: "1.5"
   add-comment:
     needs: greet
     runs-on: ubuntu-latest
