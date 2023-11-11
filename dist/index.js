@@ -32606,7 +32606,9 @@ try {
             core.setFailed("API request was not successful");
         } else {
             // Filter the similarIssues array
-            const similarIssues = response.data.similarIssues.filter(issue => issue.score !== 0 && issue.score <= distanceTolerance);
+            const similarIssues = response.data.similarIssues
+                .filter(issue => issue.score !== 0 && issue.score <= distanceTolerance)
+                .sort((a, b) => a.score - b.score);
 
             core.info("Similar issues:");
             core.info(JSON.stringify(similarIssues, null, 2));
@@ -32621,7 +32623,7 @@ try {
                 let message = "Hi I'm an AI powered bot that finds similar issues based off the issue title!\n\nPlease view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing\
                 this one and thumbs upping the other issue to help us prioritize it. Thank you!\n\n";
                 similarIssues.forEach(issue => {
-                    message += `- [${issue.title} (#${issue.number})](${issue.html_url}), Score: ${issue.score.toFixed(2)}\n`;
+                    message += `- [${issue.title} (#${issue.number})](${issue.html_url}) | score: ${issue.score.toFixed(2)}\n`;
                 });
 
                 // Set the output message
