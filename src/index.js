@@ -14,8 +14,8 @@ try {
     axios.get(url).then(response => {
         // Set the response data as the output
         core.info("Success Job");
-        core.info(response.data.toString());
-        core.setOutput("message", response.data.toString());
+        core.info(JSON.stringify(response.data));
+        core.setOutput("message", JSON.stringify(response.data));
     }).catch(error => {
         core.setFailed(error.message);
         core.info("Failed Job");
