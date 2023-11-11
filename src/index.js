@@ -6,11 +6,15 @@ try {
     // Get the input values
     const issueTitle = core.getInput('issuetitle');
     const repo = core.getInput('repo');
+    const distanceTolerance = parseFloat(core.getInput('eucldistancetolerance'));
+
+    if (distanceTolerance == null || distanceTolerance === 0 || isNaN(distanceTolerance)) {
+        core.setFailed("Invalid distance tolerance");
+    }
 
     // Construct the API URL
     const url = `https://gitgudissues.azurewebsites.net/api/getsimilarissues/${repo}/${issueTitle}`;
 
-    const distanceTolerance = 2;
 
     // Send a GET request to the API
     axios.get(url).then(response => {
@@ -33,9 +37,10 @@ try {
                 core.setFailed("No similar issues found");
             } else {
                 // Format the output message
-                let message = "Here are the most similar issues:\n";
+                let message = "Hi I'm an AI powered bot that finds similar issues based off the issue title!\n\nPlease view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing\
+                this one and thumbs upping the other issue to help us prioritize it. Thank you!\n\n";
                 similarIssues.forEach(issue => {
-                    message += `- [${issue.title} (#${issue.number})](${issue.html_url})\n`;
+                    message += `- [${issue.title} (#${issue.number})](${issue.html_url}), Score: ${issue.score.toFixed(2)}\n`;
                 });
 
                 // Set the output message

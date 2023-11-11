@@ -10,6 +10,10 @@ inputs:
   repo:
     description: 'Repository to analyze'
     required: true
+  eucldistancetolerance:
+    description: 'Euclidean distance tolerance'
+    required: false
+    default: "0.6"
 
 outputs:
   message: 
