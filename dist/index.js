@@ -32623,7 +32623,7 @@ try {
                 let message = "Hi I'm an AI powered bot that finds similar issues based off the issue title.\n\nPlease view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing\
                 this one and thumbs upping the other issue to help us prioritize it. Thank you!\n\n";
                 similarIssues.forEach(issue => {
-                    message += `- [${issue.title} (#${issue.number})](${issue.html_url}) | score: ${issue.score.toFixed(2)}\n`;
+                    message += `- [${issue.title} (#${issue.number})](${issue.html_url}),  score: ${issue.score.toFixed(2)}\n`;
                 });
 
                 // Set the output message
