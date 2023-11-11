@@ -32587,9 +32587,9 @@ try {
     // Get the input values
     const issueTitle = core.getInput('issuetitle');
     const repo = core.getInput('repo');
-    const distanceTolerance = parseFloat(core.getInput('eucldistancetolerance'));
+    const similarityTolerance = parseFloat(core.getInput('eucldistancetolerance'));
 
-    if (distanceTolerance == null || distanceTolerance === 0 || isNaN(distanceTolerance)) {
+    if (similarityTolerance == null || similarityTolerance === 0 || isNaN(similarityTolerance)) {
         core.setFailed("Invalid distance tolerance");
     }
 
@@ -32608,7 +32608,7 @@ try {
         } else {
             // Filter the similarIssues array
             const similarIssues = response.data.similarIssues
-                .filter(issue => issue.score !== 0 && issue.score <= distanceTolerance)
+                .filter(issue => issue.score >= similarityTolerance)
                 .sort((a, b) => b.score - a.score);
 
             core.info("Similar issues:");

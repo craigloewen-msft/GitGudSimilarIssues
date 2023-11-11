@@ -10,10 +10,10 @@ inputs:
   repo:
     description: 'Repository to analyze'
     required: true
-  eucldistancetolerance:
-    description: 'Euclidean distance tolerance'
+  similaritytolerance:
+    description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
     required: false
-    default: "0.6"
+    default: "0.7"
 
 outputs:
   message: 
