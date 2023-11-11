@@ -32595,8 +32595,8 @@ try {
     axios.get(url).then(response => {
         // Set the response data as the output
         core.info("Success Job");
-        core.info(response.data.toString());
-        core.setOutput("message", response.data.toString());
+        core.info(JSON.stringify(response.data, null, 2));
+        core.setOutput("message", JSON.stringify(response.data, null, 2));
     }).catch(error => {
         core.setFailed(error.message);
         core.info("Failed Job");
