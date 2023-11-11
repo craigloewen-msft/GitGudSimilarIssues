@@ -32594,13 +32594,13 @@ try {
     // Send a GET request to the API
     axios.get(url).then(response => {
         // Set the response data as the output
-        core.setInfo("Success Job");
-        core.setInfo(response.data.toString());
+        core.info("Success Job");
+        core.info(response.data.toString());
         core.setOutput("message", response.data.toString());
     }).catch(error => {
         core.setFailed(error.message);
-        core.setInfo("Failed Job");
-        core.setInfo(error.message);
+        core.info("Failed Job");
+        core.info(error.message);
     });
 } catch (error) {
     core.setFailed(error.message);
