@@ -14,7 +14,10 @@ jobs:
           issuetitle: ${{ github.event.issue.title }}
           repo: ${{ github.repository }}
           similaritytolerance: "0.5"
-          commentbody: "Test one liner..."
+          commentbody: |
+            This is a custom comment body in markdown.
+
+            # Works like a charm! :) 
   add-comment:
     needs: generatecomment
     runs-on: ubuntu-latest
