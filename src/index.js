@@ -65,7 +65,7 @@ try {
                 message += "\n> Note: You can give me feedback by thumbs upping or thumbs downing this comment.";
 
                 // Set the output message
-                core.info("Success Job");
+                core.info("Output message:");
                 core.info(message);
                 core.setOutput("message", message);
             }
