@@ -14,7 +14,7 @@ inputs:
     description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
     required: false
     default: "0.7"
-  commentBody:
+  commentbody:
     description: 'Comment body to post'
     required: false
     default: |

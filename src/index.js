@@ -7,7 +7,7 @@ try {
     const issueTitle = core.getInput('issuetitle');
     const repo = core.getInput('repo');
     const similarityTolerance = parseFloat(core.getInput('similaritytolerance'));
-    const commentBody = core.getInput('commentBody');
+    const commentBody = core.getInput('commentbody');
 
     if (similarityTolerance == null || similarityTolerance === 0 || isNaN(similarityTolerance)) {
         core.setFailed("Invalid distance tolerance");

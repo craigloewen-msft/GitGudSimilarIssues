@@ -14,7 +14,7 @@ jobs:
           issuetitle: ${{ github.event.issue.title }}
           repo: ${{ github.repository }}
           similaritytolerance: "0.5"
-          commentBody: |
+          commentbody: |
             This is a custom comment body in markdown.
 
             # Works like a charm! :) 
