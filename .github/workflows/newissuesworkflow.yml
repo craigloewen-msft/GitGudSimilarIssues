@@ -3,7 +3,7 @@ on:
     types: [opened]
 
 jobs:
-  greet:
+  generatecomment:
     runs-on: ubuntu-latest
     outputs:
       message: ${{ steps.getbody.outputs.message }}
@@ -19,7 +19,7 @@ jobs:
 
             # Works like a charm! :) 
   add-comment:
-    needs: greet
+    needs: generatecomment
     runs-on: ubuntu-latest
     permissions:
       issues: write
