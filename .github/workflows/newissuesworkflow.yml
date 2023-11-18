@@ -8,13 +8,16 @@ jobs:
     outputs:
       message: ${{ steps.getbody.outputs.message }}
     steps:
-      - uses: actions/checkout@v2
       - id: getbody
         uses: craigloewen-msft/GitGudSimilarIssues@main
         with:
           issuetitle: ${{ github.event.issue.title }}
           repo: ${{ github.repository }}
-          eucldistancetolerance: "1.5"
+          similaritytolerance: "0.5"
+          commentBody: |
+            This is a custom comment body in markdown.
+
+            # Works like a charm! :) 
   add-comment:
     needs: greet
     runs-on: ubuntu-latest

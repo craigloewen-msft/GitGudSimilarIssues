@@ -7,6 +7,7 @@ try {
     const issueTitle = core.getInput('issuetitle');
     const repo = core.getInput('repo');
     const similarityTolerance = parseFloat(core.getInput('similaritytolerance'));
+    const commentBody = core.getInput('commentBody');
 
     if (similarityTolerance == null || similarityTolerance === 0 || isNaN(similarityTolerance)) {
         core.setFailed("Invalid distance tolerance");
@@ -40,8 +41,7 @@ try {
                 core.setFailed("No similar issues found");
             } else {
                 // Format the output message
-                let message = "Hi I'm an AI powered bot that finds similar issues based off the issue title.\n\nPlease view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing\
-                this one and thumbs upping the other issue to help us prioritize it. Thank you!\n\n";
+                let message = commentBody + "\n\n";
 
                 // Add the open issues to the message
                 const openIssues = similarIssues.filter(issue => issue.state === 'open');
@@ -62,7 +62,7 @@ try {
                 }
 
 
-                message += "\nYou can give me feedback by thumbs upping or thumbs downing this comment.";
+                message += "\n> Note: You can give me feedback by thumbs upping or thumbs downing this comment.";
 
                 // Set the output message
                 core.info("Success Job");
