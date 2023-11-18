@@ -9,6 +9,9 @@ try {
     const similarityTolerance = parseFloat(core.getInput('similaritytolerance'));
     const commentBody = core.getInput('commentbody');
 
+    core.info("Comment body: " + commentBody);
+    core.info("Similarity tolerance" + similarityTolerance);
+
     if (similarityTolerance == null || similarityTolerance === 0 || isNaN(similarityTolerance)) {
         core.setFailed("Invalid distance tolerance");
     }
