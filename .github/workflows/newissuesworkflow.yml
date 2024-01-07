@@ -11,10 +11,10 @@ jobs:
       - id: getSimilarIssues
         uses: craigloewen-msft/GitGudSimilarIssues@main
         with:
-          issueTitle: ${{ github.event.issue.title }}
+          issue-title: ${{ github.event.issue.title }}
           repository: ${{ github.repository }}
-          similarityTolerance: "0.5"
-          commentBody: |
+          similarity-tolerance: "0.5"
+          comment-body: |
             This is a custom comment body in markdown.
 
             # Works like a charm! :) 

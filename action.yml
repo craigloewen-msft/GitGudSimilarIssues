@@ -4,7 +4,7 @@ description: 'Get similar issues based on an issue title from GitGudIssues'
 
 inputs:
   inputs:
-    issueTitle:  
+    issue-title:  
       description: 'Issue to analyze title'
       required: true
       default: 'Hello World'
@@ -14,11 +14,11 @@ inputs:
     repository:
       description: 'Repository to analyze'
       required: false
-    similarityTolerance:
+    similarity-tolerance:
       description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
       required: false
       default: "0.7"
-    commentBody:
+    comment-body:
       description: 'Comment body to post'
       required: false
       default: |
