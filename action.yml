@@ -8,9 +8,6 @@ inputs:
       description: 'Issue to analyze title'
       required: true
       default: 'Hello World'
-    issuetitle:  
-      description: 'Issue to analyze title'
-      required: false
     repo:
       description: 'Repository to analyze'
       required: true
@@ -21,9 +18,6 @@ inputs:
       description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
       required: false
       default: "0.7"
-    similaritytolerance:
-      description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
-      required: false
     commentBody:
       description: 'Comment body to post'
       required: false
@@ -31,9 +25,6 @@ inputs:
         Hi I'm an AI powered bot that finds similar issues based off the issue title.
         
         Please view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing this one and thumbs upping the other issue to help us prioritize it. Thank you!
-    commentbody:
-      description: 'Comment body to post'
-      required: false
 
 runs:
   using: 'node20'
