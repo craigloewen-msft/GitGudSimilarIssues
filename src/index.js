@@ -4,10 +4,10 @@ const axios = require('axios');
 
 try {
     // Get the input values
-    const issueTitle = core.getInput('issuetitle');
-    const repo = core.getInput('repo');
-    const similarityTolerance = parseFloat(core.getInput('similaritytolerance'));
-    const commentBody = core.getInput('commentbody');
+    const issueTitle = core.getInput('issueTitle') || core.getInput('issuetitle');
+    const repo = core.getInput('repo') || core.getInput('repository');
+    const similarityTolerance = parseFloat(core.getInput('similarityTolerance') || core.getInput('similaritytolerance'));
+    const commentBody = core.getInput('commentBody') || core.getInput('commentbody');
 
     core.info("Comment body: " + commentBody);
     core.info("Similarity tolerance" + similarityTolerance);

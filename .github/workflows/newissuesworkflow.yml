@@ -3,23 +3,23 @@ on:
     types: [opened]
 
 jobs:
-  generatecomment:
+  findSimilarIssues:
     runs-on: ubuntu-latest
     outputs:
-      message: ${{ steps.getbody.outputs.message }}
+      message: ${{ steps.getSimilarIssues.outputs.message }}
     steps:
-      - id: getbody
+      - id: getSimilarIssues
         uses: craigloewen-msft/GitGudSimilarIssues@main
         with:
-          issuetitle: ${{ github.event.issue.title }}
-          repo: ${{ github.repository }}
-          similaritytolerance: "0.5"
-          commentbody: |
+          issueTitle: ${{ github.event.issue.title }}
+          repository: ${{ github.repository }}
+          similarityTolerance: "0.5"
+          commentBody: |
             This is a custom comment body in markdown.
 
             # Works like a charm! :) 
   add-comment:
-    needs: generatecomment
+    needs: findSimilarIssues
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -30,4 +30,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
-          BODY: ${{ needs.generatecomment.outputs.message }}
+          BODY: ${{ needs.findSimilarIssues.outputs.message }}
