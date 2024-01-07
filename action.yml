@@ -3,28 +3,27 @@ name: 'GitGudSimilarIssues Action'
 description: 'Get similar issues based on an issue title from GitGudIssues'
 
 inputs:
-  inputs:
-    issue-title:  
-      description: 'Issue to analyze title'
-      required: true
-      default: 'Hello World'
-    repo:
-      description: 'Repository to analyze'
-      required: true
-    repository:
-      description: 'Repository to analyze'
-      required: false
-    similarity-tolerance:
-      description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
-      required: false
-      default: "0.7"
-    comment-body:
-      description: 'Comment body to post'
-      required: false
-      default: |
-        Hi I'm an AI powered bot that finds similar issues based off the issue title.
-        
-        Please view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing this one and thumbs upping the other issue to help us prioritize it. Thank you!
+  issueTitle:  
+    description: 'Issue to analyze title'
+    required: true
+    default: 'Hello World'
+  repo:
+    description: 'Repository to analyze'
+    required: true
+  repository:
+    description: 'Repository to analyze'
+    required: false
+  similarityTolerance:
+    description: 'How low of a tolerance you will show issues for. 0 is not similar, 1 is identical'
+    required: false
+    default: "0.7"
+  commentBody:
+    description: 'Comment body to post'
+    required: false
+    default: |
+      Hi I'm an AI powered bot that finds similar issues based off the issue title.
+      
+      Please view the issues below to see if they solve your problem, and if the issue describes your problem please consider closing this one and thumbs upping the other issue to help us prioritize it. Thank you!
 
 runs:
   using: 'node20'
