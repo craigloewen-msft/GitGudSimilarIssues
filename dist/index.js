@@ -32585,10 +32585,10 @@ const axios = __nccwpck_require__(7347);
 
 try {
     // Get the input values
-    const issueTitle = core.getInput('issueTitle') || core.getInput('issuetitle');
+    const issueTitle = core.getInput('issue-title') || core.getInput('issuetitle');
     const repo = core.getInput('repo') || core.getInput('repository');
-    const similarityTolerance = parseFloat(core.getInput('similarityTolerance') || core.getInput('similaritytolerance'));
-    const commentBody = core.getInput('commentBody') || core.getInput('commentbody');
+    const similarityTolerance = parseFloat(core.getInput('similarity-tolerance') || core.getInput('similaritytolerance'));
+    const commentBody = core.getInput('comment-body') || core.getInput('commentbody');
 
     core.info("Comment body: " + commentBody);
     core.info("Similarity tolerance" + similarityTolerance);
