@@ -41,7 +41,8 @@ try {
 
             // Check if the filtered array has a length of 0
             if (similarIssues.length === 0) {
-                core.setFailed("No similar issues found");
+                core.warning("No similar issues found");
+                core.setOutput("message", '');
             } else {
                 // Format the output message
                 let message = commentBody + "\n\n";
