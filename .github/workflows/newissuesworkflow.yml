@@ -18,11 +18,12 @@ jobs:
             This is a custom comment body in markdown.
 
             # Works like a charm! :) 
-  add-comment:
+  addComment:
     needs: findSimilarIssues
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: needs.findSimilarIssues.outputs.message != ''
     steps:
       - name: Add comment
         run: gh issue comment "$NUMBER" --repo "$REPO" --body "$BODY"
